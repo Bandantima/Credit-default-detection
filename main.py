@@ -5,6 +5,7 @@ import sys
 from Credit.utils import get_collection_as_dataframe
 from Credit.entity.config_entity import DataIngestionConfig
 from Credit.entity import config_entity
+from Credit.components.data_ingestion import DataIngestion
 
 
 '''
@@ -33,6 +34,7 @@ if __name__=="__main__":
        #data ingestion
       data_ingestion_config  = config_entity.DataIngestionConfig(training_pipeline_config=training_pipeline_config)
       print(data_ingestion_config.to_dict())
+      data_ingestion = DataIngestion(data_ingestion_config=data_ingestion_config)
+      data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
     except Exception as e:
        print(e)
-    
